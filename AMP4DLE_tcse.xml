@@ -3,10 +3,10 @@
 	<name>AMP4DLE_tcse</name>
 	<description>Модуль AMP для DLE by TCSE.</description>
 	<icon>engine/skins/images/amp4dle.png</icon>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<dleversion>14.0</dleversion>
 	<versioncompare>greater</versioncompare>
-	<upgradeurl></upgradeurl>
+	<upgradeurl>https://online.tcse-cms.com/plugins/amp4dle/check-amp4dle.php</upgradeurl>
 	<filedelete>1</filedelete>
 	<needplugin></needplugin>
 	<mnotice>1</mnotice>
@@ -28,11 +28,9 @@
 <hr>
 <h2>Установка</h2>
 В .htaccess в корне сайта, ищем в нем код
-
-<pre>RewriteRule ^([0-9]{4})/([0-9]{2})/([0-9]{2})/page,([0-9]+),([0-9]+),(.*).html$</pre>
-
+<pre style="white-space: inherit">RewriteRule ^([0-9]{4})/([0-9]{2})/([0-9]{2})/page,([0-9]+),([0-9]+),(.*).html$</pre>
 <b>ВЫШЕ</b> вставляем код
-<pre>
+<pre style="white-space: inherit">
 # AMP4DLE_tcse
 RewriteRule ^([0-9]{4})/([0-9]{2})/([0-9]{2})/(.*)/amp.html$ index.php?subaction=showfull&year=$1&month=$2&day=$3&news_name=$4&seourl=$4&amp=1 [L]
 RewriteRule ^([^.]+)/([0-9]+)-(.*)/amp.html$ index.php?newsid=$2&seourl=$3&seocat=$1&amp=1 [L]
@@ -42,7 +40,6 @@ RewriteRule ^([0-9]+)-(.*)/amp.html$ index.php?newsid=$1&seourl=$2&amp=1 [L]
 <h2>Настройка</h2>
 У вас есть 2 файла в папке с вашим шаблоном - amp.tpl и custom/amp/amp-fullstory.tpl
 В них настраиваем внешний вид ваших amp страниц. 
-
 Какие теги можно использовать в amp.tpl и custom/amp/amp-fullstory.tpl:
 {full-link} - ссылка на полную новость
 [full-link]..[/full-link] - текст между тегами станет ссылкой на полную новость
@@ -62,17 +59,13 @@ RewriteRule ^([0-9]+)-(.*)/amp.html$ index.php?newsid=$1&seourl=$2&amp=1 [L]
 		<operation action="before">
 			<searchcode><![CDATA[if ($canonical) {]]></searchcode>
 			<replacecode><![CDATA[if ($subaction == "showfull") {
-
 	$metatags .= <<<HTML
 	
 <link rel="canonical" href="{$full_link}">
 HTML;
-
 	$metatags .= <<<HTML
-
 <link rel="amphtml" href="{$amp_link}">
 HTML;
-
 };]]></replacecode>
 		</operation>
 	</file>
