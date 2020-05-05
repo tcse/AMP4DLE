@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dleplugin>
+	<name>AMP4DLE_tcse</name>
+	<description>Модуль AMP для DLE by TCSE.</description>
+	<icon>engine/skins/images/amp4dle.png</icon>
+	<version>1.0</version>
+	<dleversion>14.0</dleversion>
+	<versioncompare>greater</versioncompare>
+	<upgradeurl></upgradeurl>
+	<filedelete>1</filedelete>
+	<needplugin></needplugin>
+	<mnotice>1</mnotice>
+	<mysqlinstall><![CDATA[]]></mysqlinstall>
+	<mysqlupgrade><![CDATA[]]></mysqlupgrade>
+	<mysqlenable><![CDATA[]]></mysqlenable>
+	<mysqldisable><![CDATA[]]></mysqldisable>
+	<mysqldelete><![CDATA[]]></mysqldelete>
+	<phpinstall><![CDATA[]]></phpinstall>
+	<phpupgrade><![CDATA[]]></phpupgrade>
+	<phpenable><![CDATA[]]></phpenable>
+	<phpdisable><![CDATA[]]></phpdisable>
+	<phpdelete><![CDATA[]]></phpdelete>
+	<notice><![CDATA[
+		amp cтраница формируется по следующим правилам:
+		1. Только для полных новостей.
+		2. Допустим исходный адрес страницы: http://yoursite.com/id-имя новости.html
+		3. amp версия будет http://yoursite.com/id-имя новости/amp.html
+
+[b]УСТАНОВКА модуля[/b]
+Открываем .htaccess в корне вашего сайта, ищем в нем код
+
+# Сам пост
+
+ВЫШЕ вставляем код
+
+# AMP4DLE_tcse
+RewriteRule ^([0-9]{4})/([0-9]{2})/([0-9]{2})/(.*)/amp.html$ index.php?subaction=showfull&year=$1&month=$2&day=$3&news_name=$4&seourl=$4&amp=1 [L]
+RewriteRule ^([^.]+)/([0-9]+)-(.*)/amp.html$ index.php?newsid=$2&seourl=$3&seocat=$1&amp=1 [L]
+RewriteRule ^([0-9]+)-(.*)/amp.html$ index.php?newsid=$1&seourl=$2&amp=1 [L]
+
+
+Установка завершена. Далее вас ждет не менее увлекательное - настройка под свои нужды. У вас есть 2 файла в папке с вашим шаблоном - amp.tpl и custom/amp/amp-fullstory.tpl
+В них настраиваем внешний вид ваших amp страниц. 
+
+Какие теги можно использовать в amp.tpl и custom/amp/amp-fullstory.tpl:
+{full-link} - ссылка на полную новость
+[full-link]..[/full-link] - текст между тегами станет ссылкой на полную новость
+{login} - Автор новости
+[profile]...[/profile] - текст между тегами станет ссылкой на профиль автора
+{views} - количество просмотров новости
+{date} - дата новости в формате 01.08.2017
+{seo-date} - дата для разметки schema в формате 2017-08-01
+{title} - тайтл новости
+{full-story} - описание новости
+{description} - обрезанное дл 150 символов описание новости для мета тегов и микроразметки
+{link-category} - ссылки на категории новости
+{site-name} - имя сайта с настроек
+{site-url} - полный адрес сайта
+{THEME} - адрес сайта с приставкой /templates/ваша_тема]]></notice>
+
+	<file name="engine/engine.php">
+		<operation action="before">
+			<searchcode><![CDATA[if ($canonical) {]]></searchcode>
+			<replacecode><![CDATA[if ($subaction == "showfull") {
+
+	$metatags .= <<<HTML
+	
+<link rel="canonical" href="{$full_link}">
+HTML;
+
+	$metatags .= <<<HTML
+
+<link rel="amphtml" href="{$amp_link}">
+HTML;
+
+};]]></replacecode>
+		</operation>
+	</file>
+	<file name="engine/modules/show.full.php">
+		<operation action="after">
+			<searchcode><![CDATA[elseif( $category_id and $cat_info[$category_id]['full_tpl'] != '' ) $tpl->load_template( $cat_info[$category_id]['full_tpl'] . '.tpl' );]]></searchcode>
+			<replacecode><![CDATA[elseif ( isset( $_GET["amp"] ) && intval( $_GET["amp"] ) == 1 ) include_once (DLEPlugins::Check(ENGINE_DIR . '/modules/amp.php'));]]></replacecode>
+		</operation>
+		<operation action="after">
+			<searchcode><![CDATA[$tpl->set( '{full-story}', $row['full_story'] );]]></searchcode>
+			<replacecode><![CDATA[$amp_link = $short_link . $news_name . "/amp.html";
+		$tpl->set('{amp_link}', $amp_link);]]></replacecode>
+		</operation>
+	</file>
+</dleplugin>
