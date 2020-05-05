@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dleplugin>
 	<name>AMP4DLE_tcse</name>
-	<description>Модуль AMP для DLE by TCSE.</description>
+	<description>Модуль AMP для DLE by TCSE.  </description>
 	<icon>engine/skins/images/amp4dle.png</icon>
 	<version>1.0</version>
 	<dleversion>14.0</dleversion>
