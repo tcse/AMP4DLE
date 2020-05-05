@@ -5,7 +5,9 @@
 
 Автоматическая генерация AMP версии страниц полной новости.
 
-Приставка /amp.html в конце ссылки полной новости. Например, у страницы http://сайт_ру/o-skripte/1-post1.html - версия AMP будет доступна по ссылке http://сайт ру/o-skripte/1-post1/amp.html .
+Приставка /amp.html в конце ссылки полной новости. Например, у страницы https://tcse-cms.com/main/inet/1447-Sovremennoe-seo-amp-istorii.html - версия AMP будет доступна по ссылке https://tcse-cms.com/main/inet/1447-Sovremennoe-seo-amp-istorii/amp.html .
+
+![](https://sun4-16.userapi.com/Gm32m9Td-DopmXv9MMkCbaf4xiaWil8hen_GLQ/sqfrTSgQtss.jpg)
 
 Автоматическое добавление мета-тегов canonical и amphtml для индексации AMP версии страницы.
 
