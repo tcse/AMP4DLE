@@ -1,6 +1,10 @@
 <!-- Start Navbar -->
 <header class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4 ">
-    <div role="button" aria-label="open sidebar" on="tap:header-sidebar.toggle" tabindex="0" class="ampstart-navbar-trigger  pr2  ">☰
+    <div role="button" aria-label="open sidebar" on="tap:header-sidebar.toggle" tabindex="0" class="ampstart-navbar-trigger  pr2  ">
+        ☰
+    </div>
+    <div class="ampstart-navbar m-auto">
+        ИМЯ САЙТА
     </div>
 </header>
 <!-- Start Sidebar -->
@@ -41,8 +45,8 @@
     </ul>
 
     <ul class="ampstart-sidebar-faq list-reset m0">
-        <li class="ampstart-faq-item"><a href="https://tcse-cms.com/about.html" class="text-decoration-none">О компании</a></li>
-        <li class="ampstart-faq-item"><a href="https://tcse-cms.com/contacts.html" class="text-decoration-none">Контакты</a></li>
+        <li class="ampstart-faq-item"><a href="/about.html" class="text-decoration-none">О компании</a></li>
+        <li class="ampstart-faq-item"><a href="/contacts.html" class="text-decoration-none">Контакты</a></li>
     </ul>
 </amp-sidebar>
 <!-- End Sidebar -->

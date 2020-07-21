@@ -3,7 +3,7 @@
 	<name>AMP4DLE_tcse</name>
 	<description>Модуль AMP для DLE by TCSE.</description>
 	<icon>engine/skins/images/amp4dle.png</icon>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<dleversion>14.0</dleversion>
 	<versioncompare>greater</versioncompare>
 	<upgradeurl>https://online.tcse-cms.com/plugins/amp4dle/check-amp4dle.php</upgradeurl>
@@ -38,9 +38,9 @@ RewriteRule ^([0-9]+)-(.*)/amp.html$ index.php?newsid=$1&seourl=$2&amp=1 [L]
 </pre>
 <hr>
 <h2>Настройка</h2>
-У вас есть 2 файла в папке с вашим шаблоном - amp.tpl и custom/amp/amp-fullstory.tpl
+У вас есть 2 файла в папке с вашим шаблоном - custom/amp/main.tpl и custom/amp/fullstory.tpl
 В них настраиваем внешний вид ваших amp страниц. 
-Какие теги можно использовать в amp.tpl и custom/amp/amp-fullstory.tpl:
+Какие теги можно использовать в custom/amp/main.tpl и custom/amp/fullstory.tpl:
 {full-link} - ссылка на полную новость
 [full-link]..[/full-link] - текст между тегами станет ссылкой на полную новость
 {login} - Автор новости

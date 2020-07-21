@@ -54,13 +54,10 @@
 	</script>
   </head>
   <body>
-
 	<!-- Start Navbar -->
 		{include file="custom/amp/navbar.tpl"}
 	<!-- End Navbar -->
-
-    {include file="custom/amp/amp-fullstory.tpl"}
-
+    {include file="custom/amp/fullstory.tpl"}
     {include file="custom/amp/footer.tpl"}
   </body>
 </html>

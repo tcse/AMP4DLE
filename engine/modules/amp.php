@@ -12,7 +12,7 @@
  * - https://github.com/tcse/AMP4DLE
  */
 
-$tpl->load_template('custom/amp/amp.tpl');
+$tpl->load_template('custom/amp/main.tpl');
 
 /**
  * @param $m  - Matches
