@@ -37,8 +37,9 @@
         </ul>
     </nav>
     <small>
-        © {site-name}, 2020<br>
-        {site-url}
+        © {site-name}, 2021<br>
+        {site-url}<br>
+        AMP-шаблон для DataLife Engine от веб-студии TCSE-cms.com
     </small>
 </footer>
 <!-- End Footer -->
