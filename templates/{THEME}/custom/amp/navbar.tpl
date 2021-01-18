@@ -4,7 +4,7 @@
         ☰
     </div>
     <div class="ampstart-navbar m-auto">
-        ИМЯ САЙТА
+        {site-name}
     </div>
 </header>
 <!-- Start Sidebar -->
