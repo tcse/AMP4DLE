@@ -1,11 +1,13 @@
 # AMP4DLE
 Модуль AMP страниц для DataLife Engine 
 
+Официальная страница https://tcse-cms.com/amp4dle 
+
 В качестве исходника - бесплатный модуль DomiTori 
 
 Автоматическая генерация AMP версии страниц полной новости.
 
-Приставка /amp.html в конце ссылки полной новости. Например, у страницы https://tcse-cms.com/main/inet/1447-Sovremennoe-seo-amp-istorii.html - версия AMP будет доступна по ссылке https://tcse-cms.com/main/inet/1447-Sovremennoe-seo-amp-istorii/amp.html .
+Суффикс /amp.html в конце ссылки полной новости. Например, у страницы https://tcse-cms.com/main/inet/1447-Sovremennoe-seo-amp-istorii.html - версия AMP будет доступна по ссылке https://tcse-cms.com/main/inet/1447-Sovremennoe-seo-amp-istorii/amp.html .
 
 ![](https://sun4-16.userapi.com/Gm32m9Td-DopmXv9MMkCbaf4xiaWil8hen_GLQ/sqfrTSgQtss.jpg)
 
@@ -13,6 +15,8 @@
 
 
 ## Устанока 
+
+Загрузить архив плагина через админку Утилиты - Управления плагинами.
 
 Открываем .htaccess в корне вашего сайта, ищем в нем код
 
@@ -29,10 +33,24 @@
 
 Установка завершена. 
 
-Далее вас ждет не менее увлекательное - настройка под свои нужды. У вас есть 2 файла в папке с вашим шаблоном - amp.tpl и amp-fullstory.tpl
+
+## Принцип работы AMP с DataLife Engine
+
+AMP версия создается только для статьи целиком (то, что обычно отображается в шаблоне {THEME}/fullstory.tpl )
+
+После подключения и активации плагина AMP4DLE_pro у каждой статьи сайта в метатегах генерируемых CMS появляется новый тег информирующий о наличии AMP версии страницы.
+
+    <link rel="amphtml" href="https://sitename.com/o-skripte/1-post1/amp.html">
+
+где атрибут rel="amphtml" это тот самый признак AMP-версии,
+а ссылка вида https://sitename.com/o-skripte/1-post1/amp.html (с окончанием /amp.html ) и есть адрес AMP страницы.
+
+## Теги шаблонов
+
+У вас есть 2 файла в папке с вашим шаблоном - custom/amp/main.tpl и custom/amp/fullstory.tpl
 В них настраиваем внешний вид ваших amp страниц. 
 
-Какие теги можно использовать в amp.tpl и amp-fullstory.tpl:
+
 {full-link} - ссылка на полную новость
 
 [full-link]..[/full-link] - текст между тегами станет ссылкой на полную новость
@@ -43,19 +61,21 @@
 
 {views} - количество просмотров новости
 
-{date} - дата новости в формате 01.08.2017
+{date} - дата новости в формате 17.01.2021
 
-{seo-date} - дата для разметки schema в формате 2017-08-01
+{seo-date} - дата для разметки schema в формате 2021-01-17
 
 {title} - тайтл новости
 
 {full-story} - описание новости
 
-{description} - обрезанное дл 150 символов описание новости для мета тегов и микроразметки
+{description} - обрезанное до 150 символов описание новости для мета тегов и микроразметки
 
 {link-category} - ссылки на категории новости
 
-{site-name} - имя сайта с настроек
+{site-name} - имя сайта из админки DLE
+
+{short-name} - краткое имя сайта из админки DLE
 
 {site-url} - полный адрес сайта
 
