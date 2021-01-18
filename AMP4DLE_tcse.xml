@@ -3,8 +3,8 @@
 	<name>AMP4DLE_tcse</name>
 	<description>Модуль AMP для DLE by TCSE.</description>
 	<icon>engine/skins/images/amp4dle.png</icon>
-	<version>1.0.3</version>
-	<dleversion>14.0</dleversion>
+	<version>1.0.4</version>
+	<dleversion>13.0</dleversion>
 	<versioncompare>greater</versioncompare>
 	<upgradeurl>https://online.tcse-cms.com/plugins/amp4dle/check-amp4dle.php</upgradeurl>
 	<filedelete>1</filedelete>
@@ -53,6 +53,7 @@ RewriteRule ^([0-9]+)-(.*)/amp.html$ index.php?newsid=$1&seourl=$2&amp=1 [L]
 {description} - обрезанное дл 150 символов описание новости для мета тегов и микроразметки
 {link-category} - ссылки на категории новости
 {site-name} - имя сайта с настроек
+{short-name} - краткое имя сайта из админки
 {site-url} - полный адрес сайта
 {THEME} - адрес сайта с приставкой /templates/ваша_тема]]></notice>
 	<file name="engine/engine.php">

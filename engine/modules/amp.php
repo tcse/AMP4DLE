@@ -12,6 +12,7 @@
  * - https://github.com/tcse/AMP4DLE
  */
 
+// Указать пусть до стартового файла AMP шаблона относительно {THEME}
 $tpl->load_template('custom/amp/main.tpl');
 
 /**
@@ -236,6 +237,7 @@ $tpl->set('{full-story}', $newsContent);
 
 $tpl->set('{link-category}', $my_cat_link);
 $tpl->set('{site-name}', $config['home_title']);
+$tpl->set('{short-name}', $config['short_title']);
 $tpl->set('{site-url}', $config['http_home_url']);
 $tpl->set('{THEME}', $config['http_home_url']."templates/".$config['skin']);
 
