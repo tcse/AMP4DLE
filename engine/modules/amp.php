@@ -241,6 +241,24 @@ $tpl->set('{short-name}', $config['short_title']);
 $tpl->set('{site-url}', $config['http_home_url']);
 $tpl->set('{THEME}', $config['http_home_url']."templates/".$config['skin']);
 
+//=========================
+// Теги банеры, например [banner_header]{banner_header}[/banner_header]
+//=========================
+if( $config['allow_banner'] ) include_once (DLEPlugins::Check(ENGINE_DIR . '/modules/banners.php'));
+if( $config['allow_banner'] AND count( $banners ) ) {
+    
+    foreach ( $banners as $name => $value ) {
+        $tpl->copy_template = str_replace( "{banner_" . $name . "}", $value, $tpl->copy_template );
+
+        if ( $value ) {
+            $tpl->copy_template = str_replace ( "[banner_" . $name . "]", "", $tpl->copy_template );
+            $tpl->copy_template = str_replace ( "[/banner_" . $name . "]", "", $tpl->copy_template );
+        }
+    }
+}
+$tpl->set_block( "'{banner_(.*?)}'si", "" );
+$tpl->set_block ( "'\\[banner_(.*?)\\](.*?)\\[/banner_(.*?)\\]'si", "" );
+
 // Последние приготовления
 
 $tpl->compile('main');
