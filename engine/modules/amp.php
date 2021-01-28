@@ -209,6 +209,12 @@ $tpl->set('{title}', stripslashes($row['title']));
 
 $newsContent = ($row['full_story']) ? stripcslashes($row['full_story']) : stripcslashes($row['short_story']);
 
+// Добавляем обработку spoiler в тело amp страницы 
+$newsContent = preg_replace("#<!--dle_spoiler(.+?)<!--spoiler_text-->#is", "", $newsContent);
+$newsContent = preg_replace("#<!--spoiler_text_end-->(.+?)<!--/dle_spoiler-->#is", "", $newsContent);
+
+// Тег описания {description} для микроразметки - удаляет все форматирование
+
 $count               = 150;
 $newsContentStripped = preg_replace("#<!--TBegin(.+?)<!--TEnd-->#is", "", $newsContent);
 $newsContentStripped = preg_replace("#<!--MBegin(.+?)<!--MEnd-->#is", "", $newsContentStripped);
